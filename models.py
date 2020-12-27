@@ -1,9 +1,14 @@
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, ForeignKey, Table
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String
+from sqlalchemy.orm import relationship
 
-engine = create_engine('sqlite:///:memory:', echo=True)
+engine = create_engine('sqlite:////home/alexandra/ot_blog/ot_blog.db', echo=True)
 Base = declarative_base()
+
+post_tags = Table('post_tags', Base.metadata,
+                  Column('post_id', ForeignKey('posts.id'), primary_key=True),
+                  Column('tag_id', ForeignKey('tags.id'), primary_key=True))
 
 
 class User(Base):
@@ -24,6 +29,9 @@ class Post(Base):
     id = Column(Integer, primary_key=True)
     title = Column(String, nullable=True)
     text = Column(String, nullable=True)
+    user_id = Column(Integer, ForeignKey('users.id'))
+    user = relationship('User', back_populates="posts")
+    tags = relationship('Tag', secondary=post_tags, back_populates='posts')
 
 
 class Comment(Base):
@@ -31,6 +39,10 @@ class Comment(Base):
 
     id = Column(Integer, primary_key=True)
     text = Column(String, nullable=False)
+    user_id = Column(Integer, ForeignKey('users.id'))
+    user = relationship("User", back_populates="comments")
+    post_id = Column(Integer, ForeignKey('posts.id'))
+    post = relationship("Post", back_populates="comments")
 
 
 class Tag(Base):
@@ -38,3 +50,7 @@ class Tag(Base):
 
     id = Column(Integer, primary_key=True)
     text = Column(String, nullable=False)
+    posts = relationship('Post', secondary=post_tags, back_populates='tags')
+
+
+Base.metadata.create_all(bind=engine)
