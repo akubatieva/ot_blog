@@ -54,3 +54,7 @@ class Tag(Base):
 
 
 Base.metadata.create_all(bind=engine)
+
+# TODO:  База заполняется данными через ORM
+# TODO: Есть пример запроса на выборку данных из базы (через ORM)
+# TODO: change absolute paths for dbs to rel
