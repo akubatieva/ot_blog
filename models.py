@@ -28,9 +28,9 @@ class Post(Base):
 
     id = Column(Integer, primary_key=True)
     title = Column(String, nullable=True)
-    text = Column(String, nullable=True)
+    text = Column(String, nullable=False)
     user_id = Column(Integer, ForeignKey('users.id'))
-    user = relationship('User', back_populates="posts")
+    user = relationship('User', backref="posts")
     tags = relationship('Tag', secondary=post_tags, back_populates='posts')
 
 
@@ -40,9 +40,9 @@ class Comment(Base):
     id = Column(Integer, primary_key=True)
     text = Column(String, nullable=False)
     user_id = Column(Integer, ForeignKey('users.id'))
-    user = relationship("User", back_populates="comments")
+    user = relationship("User", backref="comments")
     post_id = Column(Integer, ForeignKey('posts.id'))
-    post = relationship("Post", back_populates="comments")
+    post = relationship("Post", backref="comments")
 
 
 class Tag(Base):
