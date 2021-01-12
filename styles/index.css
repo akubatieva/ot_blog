@@ -12,7 +12,7 @@ html {
 
 body {
     width: 83%;
-    margin: 0;
+    margin: 0 auto;
     padding: 0 20px 20px 20px;
 }
 
@@ -48,9 +48,17 @@ a:hover {
     float: left;
     word-wrap: break-word;
     overflow: hidden;
+    text-align: center;
 }
 
 .main {
     width: 73%;
     float: right;
+}
+
+.date {
+    padding-bottom: 10px;
+    padding-top: 10px;
+    font-size: 10px;
+    color: #707080;
 }
