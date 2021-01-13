@@ -62,3 +62,13 @@ a:hover {
     font-size: 10px;
     color: #707080;
 }
+
+.comments {
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+.comments .comment-block {
+    margin-left: 45px;
+    margin-bottom: 16px;
+}
