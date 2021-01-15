@@ -5,6 +5,15 @@
     position: sticky;
 }
 
+.header a {
+    color: #f1f1f1;
+    text-decoration: none;
+}
+
+.header a:hover {
+    color: #f1f1f1;
+}
+
 html {
     font-size: 15px;
     font-family: "Open Sans", sans-serif;
@@ -71,4 +80,24 @@ a:hover {
 .comments .comment-block {
     margin-left: 45px;
     margin-bottom: 16px;
+}
+
+.user-card h1 {
+    font-size: 20px;
+    font-weight: 300;
+    margin: 20px 0;
+    color: #f60;
+}
+
+.sidebar img {
+    width: 140px;
+    max-height: 280px;
+}
+
+.user-info tbody {
+    text-align: left;
+}
+
+th {
+    width: 100px;
 }
