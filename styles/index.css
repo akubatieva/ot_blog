@@ -38,6 +38,12 @@ a:hover {
     display: block;
     margin: 0 0 .5em;
     line-height: 1.4em;
+    text-overflow: ellipsis;
+}
+
+.post-entry img {
+    max-height: 500px;
+    max-width: 400px;
 }
 
 .post-footer {
